@@ -11,10 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      banner.belongsTo(models.event_details, {
+        foreignKey: "idpromotor",
+      });
     }
   }
   banner.init({
-    image: DataTypes.STRING,
+    images: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'banner',

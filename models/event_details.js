@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      event_details.belongsTo(models.event_format, {
+        foreignKey: "idformat",
+      });
+      event_details.belongsTo(models.event_topic, {
+        foreignKey: "idtopic",
+      });
+      event_details.hasMany(models.ticket, {
+        foreignKey: "idevent",
+      });
+      event_details.hasMany(models.banner, {
+        foreignKey: "idevent",
+      });
     }
   }
   event_details.init({

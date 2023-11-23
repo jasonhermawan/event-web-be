@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      event_format.hasMany(models.event_details, {
+        foreignKey: "idformat",
+      });
     }
   }
   event_format.init({
