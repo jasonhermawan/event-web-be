@@ -1,9 +1,6 @@
-const { eventsControllers} = require("../controllers")
-const router = require("express").Router()
+const { eventsController } = require("../controllers");
+const router = require("express").Router();
 
-
-router.get("/" , eventsControllers.getData) 
-
-
+router.get("/", eventsController.getEvents);
 
 module.exports = router;

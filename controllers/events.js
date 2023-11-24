@@ -1,16 +1,35 @@
-const {events} = require("../models")
+const { events, accounts, formats, topics, cities } = require("../models");
 
-module.exports={
-    getData: async (req , res , next )  => {
-        try {
-            const result = await events.findAll({
-                where: req.query,
-                order: [["id", "ASC"]]
-            });
-            return res.status(200).send(result)
-            console.log(result)
-        } catch (error) {
-            console.log(error)
-        }
-    },
+module.exports = {
+  getEvents: async (req, res, next) => {
+    try {
+      const result = await events.findAll({
+        include: [
+          {
+            model: accounts,
+            required: false,
+          },
+          {
+            model: formats,
+            required: true,
+          },
+          {
+            model: topics,
+            required: true,
+          },
+          {
+            model: cities,
+            required: true,
+          },
+        ],
+        where: req.query,
+        attributes: {exclude: ["createdAt", "updatedAt"]},
+        order: [["id", "ASC"]],
+      });
+      return res.status(200).send(result) 
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send(error)
+    }
+  }
 }
