@@ -3,6 +3,7 @@ const topicsRouter = require("./topics");
 const formatsRouter = require("./formats");
 const citiesRouter = require("./cities");
 const accountsRouter = require("./accounts")
+const bannersRouter = require("./banners");
 
 module.exports = {
   eventsRouter,
@@ -10,4 +11,5 @@ module.exports = {
   formatsRouter,
   citiesRouter,
   accountsRouter,
+  bannersRouter,
 }

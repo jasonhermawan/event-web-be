@@ -14,12 +14,13 @@ app.get("/", (req, res) => {
 });
 
 // Define Router
-const {eventsRouter, topicsRouter, formatsRouter, citiesRouter, accountsRouter} = require("./routers");
+const {eventsRouter, topicsRouter, formatsRouter, citiesRouter, accountsRouter, bannersRouter} = require("./routers");
 app.use("/events", eventsRouter)
 app.use("/topics", topicsRouter)
 app.use("/formats", formatsRouter)
 app.use("/cities", citiesRouter);
 app.use("/accounts" , accountsRouter)
+app.use("/banners", bannersRouter);
 
 
 app.listen(PORT, () => {
