@@ -8,6 +8,7 @@ module.exports={
                 order: [["id", "ASC"]]
             });
             return res.status(200).send(result)
+            console.log(result)
         } catch (error) {
             console.log(error)
         }

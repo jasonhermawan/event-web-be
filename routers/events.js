@@ -1,8 +1,8 @@
-const {accountsControllers} = require("../controllers")
+const { eventsControllers} = require("../controllers")
 const router = require("express").Router()
 
 
-router.get("/" , accountsControllers.getData) 
+router.get("/" , eventsControllers.getData) 
 
 
 
