@@ -38,12 +38,6 @@ module.exports = {
                 req.body.password = hashPassword
                 delete req.body.confirmPassword
                 const result = await accounts.create(req.body)
-                // const token = jwt.sign({
-                //     id : result.id , 
-                //     email : result.email ,
-                // } , process.env.SCRT_TOKEN ,{
-                //     expiresIn:"1h"
-                // })
                 return res.status(201).send({
                     succes: true,
                     message: "register succesfully",
@@ -134,49 +128,15 @@ module.exports = {
             res.status(500).send(error)
         }
     }, 
+    checkRole: async (req, res, next) => {
+        try {
+            const token = req.token;
+            const accountData = jwt.verify(token, process.env.SCRT_TKN);
+            return res.status(200).send(accountData);
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send(error)
+        }
+    }
     
-
-    // login: async (req, res, next) => {
-    //     try {
-    //         const result = await accounts.findOne({
-    //             where: {
-    //                 email: req.body.email,
-    //             },
-    //             raw : true , 
-    //         })
-
-    //         const isValid = await bcrypt.compare(req.body.password, result.password)
-    //         console.log(isValid);
-    //         if (isValid) {
-    //             //GENERATAE TOKEN : payload  
-    //             const { id , username , email } =result 
-    //             const token = jwt.sign({
-    //                id , 
-    //                email ,
-    //                username
-    //             } , 
-    //             process.env.SCRT_TOKEN ,
-    //             {
-    //             expiresIn : "1h",
-    //             }
-    //             )
-    //             return res.status(200).send({
-    //                 succes : true ,
-    //                 result : {
-    //                     username , 
-    //                     email , 
-    //                     token 
-    //                 }
-    //             })
-    //         } else {
-    //             return res.status(401).send({
-    //                 succes: false,
-    //                 message: "account tidak ada"
-    //             })
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //         return res.staus(500).send(error)
-    //     }
-    // }
 }
