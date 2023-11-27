@@ -137,6 +137,19 @@ module.exports = {
             console.log(error);
             return res.status(500).send(error)
         }
+    } , 
+    getAccountData : async (req , res , next) => {
+        try {
+            const token = req.token
+            const accountData = jwt.verify(token, process.env.SCRT_TKN);
+            return res.status(200).send({
+                accountData
+            })
+            
+        } catch (error) {
+            console.log
+        }
     }
     
 }
+
