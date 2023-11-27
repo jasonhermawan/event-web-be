@@ -7,6 +7,7 @@ router.get("/role", accountsControllers.checkRole);
 router.post("/register" , accountsControllers.register); 
 router.post("/login" , accountsControllers.login); 
 router.patch("/reset-password"  , accountsControllers.resetPass);
+router.get("/get-data"  , accountsControllers.getAccountData)
 
 
 module.exports = router;
