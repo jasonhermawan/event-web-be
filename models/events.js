@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      events.hasMany(models.tickets)
+      events.hasMany(models.banners)
       events.belongsTo(models.accounts);
       events.belongsTo(models.topics);
       events.belongsTo(models.formats);
@@ -20,8 +22,10 @@ module.exports = (sequelize, DataTypes) => {
   events.init({
     name: DataTypes.STRING,
     accountid: DataTypes.INTEGER,
-    date: DataTypes.DATE,
-    time: DataTypes.TIME,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    startTime: DataTypes.TIME,
+    endTime: DataTypes.TIME,
     price: DataTypes.INTEGER,
     cityid: DataTypes.INTEGER,
     location: DataTypes.STRING,
@@ -29,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     formatid: DataTypes.INTEGER,
     topicid: DataTypes.INTEGER,
     description: DataTypes.STRING,
-    categoryid: DataTypes.INTEGER
+    type: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'events',

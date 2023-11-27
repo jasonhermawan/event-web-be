@@ -15,11 +15,19 @@ module.exports = {
       accountid: {
         type: Sequelize.INTEGER
       },
-      date: {
-        type: Sequelize.DATE
+      startDate: {
+        type: Sequelize.DATE,
+        allowNull : false
       },
-      time: {
-        type: Sequelize.TIME
+      endDate: {
+        type: Sequelize.DATE,
+      },
+      startTime: {
+        type: Sequelize.TIME,
+        allowNull : false
+      },
+      endTime: {
+        type: Sequelize.TIME,
       },
       price: {
         type: Sequelize.INTEGER
@@ -42,8 +50,8 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      categoryid: {
-        type: Sequelize.INTEGER
+      type: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -35,11 +35,12 @@ module.exports = {
         console.log("check file from requeust client", file);
         if (
           file.originalname.toLowerCase().includes("png") ||
-          file.originalname.toLowerCase().includes("jpg")
+          file.originalname.toLowerCase().includes("jpg") ||
+          file.originalname.toLowerCase().includes("jpeg")
         ) {
           cb(null, true);
         } else {
-          cb(new Error("Your File Extension are denied. only PNG or JPG", false));
+          cb(new Error("Your File Extension are denied. only PNG or JPG/JPEG", false));
         }
       };
       return multer({ storage: storageUploader, fileFilter });

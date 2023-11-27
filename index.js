@@ -22,6 +22,8 @@ app.use("/cities", citiesRouter);
 app.use("/accounts" , accountsRouter)
 app.use("/banners", bannersRouter);
 
+app.use("/public", express.static("public"));
+
 
 app.listen(PORT, () => {
   console.log(`API RUNNING ON PORT ${PORT}`);
