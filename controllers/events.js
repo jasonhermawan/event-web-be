@@ -34,7 +34,7 @@ module.exports = {
 
     const condition = customCondition.sortby;
 
-    const pageSize = 4;
+    const pageSize = 8;
     const offset = (combinedConditions.page - 1) * pageSize;
     delete combinedConditions.page
     delete combinedConditions.sortby
